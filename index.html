@@ -7,6 +7,7 @@
 </head>
 
 <body>
+  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
   <script src="jquery-2.2.2.js"></script>
   <script src="app.js"></script>
   <header>
@@ -15,6 +16,34 @@
   </section>
   <footer>
   </footer>
+
+  <!--Experiment Section,pls ignore-->
+  <div id="submit_area">
+    <canvas id="canvas" width="300" height="300"></canvas><!--圖片處理的地方-->
+    <div id="imageContainer"><img src="" alt=""></div><!--顯示圖片的地方-->
+    <input type='file' accept='image/*' onchange='openFile(event)'><br><!--選擇檔案的按鈕-->
+    <div id="inputfield">
+      標題: <input type="text" size="20" id="title">
+      地點: <input type="text" size="20" id="location"><br>
+      描述: <textarea name="name" rows="3" cols="50" id="describe"></textarea>
+      <button id="submit" disabled>送出</button>
+    </div>
+  </div>
+
+  <table><!--顯示資料的地方-->
+    <thead>
+      <tr>
+        <th>圖</th>
+        <th>標題</th>
+        <th>描述</th>
+        <th>地點</th>
+        <th>時間</th>
+      </tr>
+    </thead>
+    <tbody id="entries">
+    </tbody>
+  </table>
+  <!--Experiment Section,pls ignore-->
 
 </body>
 </html>

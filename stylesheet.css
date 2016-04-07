@@ -5,3 +5,30 @@ body{
   height: 1653px;
   margin: 0 0 0 0 ;
 }
+
+
+
+/*exp area*/
+textarea {
+    resize: none;
+}
+
+#canvas {
+  display: none;
+  background-color: yellow;
+}
+
+#imageContainer {
+  width: 300px;
+  height: 300px;
+  border: 2px solid black;
+}
+
+#imageContainer img {
+  height: 100%;
+  width: 100%;
+}
+
+#entries {
+  background-color: #B2DFDB;
+}
