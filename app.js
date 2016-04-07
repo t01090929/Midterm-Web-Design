@@ -195,16 +195,20 @@ var getImageThumbnailElement = function(imageURL){
     var element = $('<img>');
     link.append($('<img>').attr("src", thumbnailURL));
     link.attr("href", imageURL);
+    return link;
   }
-  return link;
+  else{
+    link.text("<沒有圖片>");
+    return link;
+  }
 }
 
 var addDataToTable = function(data){ //把資料加到table中顯示
   var newTableRow = $('<tr>');
   newTableRow.append(getImageThumbnailElement(data.val().imageURL));
   newTableRow.append($('<td>').text(data.val().title));
-  newTableRow.append($('<td>').text(data.val().describe));
   newTableRow.append($('<td>').text(data.val().location));
+  newTableRow.append($('<td>').text(data.val().describe));
   newTableRow.append($('<td>').text(data.val().time));
   $('#entries').prepend(newTableRow);
 }
