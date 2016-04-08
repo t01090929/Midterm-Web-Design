@@ -1,13 +1,16 @@
 var imageToUpload;
 var uploadedImageURL;
 var deleteHash;
-var myFirebaseRef = new Firebase("https://s60912frank.firebaseio.com/");
+var myFirebaseRef;
 var main = function() {
+  myFirebaseRef = new Firebase("https://s60912frank.firebaseio.com/");
+  $('#openFile').on("change", openFile);
   $('#submit').click(
     function(){
       var dataToSend = [$('#title').val(),$('#location').val(),$('#describe').val()];//因為上傳圖片需要時間，所以把要傳的東西在清空之前存起來
       beginLoading();
       uploadImage(imageToUpload, function(){sendData(dataToSend);}); //圖片上傳完成後才會呼叫sendData
+      //uploadImageXHR(imageToUpload, function(){sendData(dataToSend);}); //圖片上傳完成後才會呼叫sendData
       //結束在sendData內
       $('#title').val("");
       $('#location').val("");
@@ -63,9 +66,11 @@ var openFile = function(event) {
     img.onload = function(){
       var ratio = img.height / img.width;
       //縮圖
-      if(img.width > 800 || img.width > 600){
-        img.width = 800;
-        img.height = img.width * ratio;
+      if(img.width > 800 || img.height > 600){
+        canvas.width = 800;
+        canvas.height = canvas.width * ratio;
+      }
+      else{
         canvas.width = img.width;
         canvas.height = img.height;
       }
@@ -90,7 +95,7 @@ var uploadImage = function(imageData, callback){
   if(imageData != null){
     $.ajax({
       url: 'https://api.imgur.com/3/image',
-      type: 'post',
+      type: 'POST',
       headers: {
         Authorization: 'Client-ID 67c240c58b566fe'
         },
@@ -102,6 +107,7 @@ var uploadImage = function(imageData, callback){
         if(response.success) {
           uploadedImageURL = response.data.link;
           deleteHash = response.data.deletehash;
+          //alert(uploadedImageURL);
           console.log("Upload Successful!");
           callback(); //結束時呼叫某function
         }
@@ -116,22 +122,42 @@ var uploadImage = function(imageData, callback){
   }
 }
 
+var uploadImageXHR = function(imageData, callback){
+  var formData = new FormData();
+  formData.append("image", imageData);
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "https://api.imgur.com/3/image.json");
+  xhr.setRequestHeader('Authorization', 'Client-ID 67c240c58b566fe');
+  xhr.send(formData);
+  xhr.onload = function () {
+    uploadedImageURL = JSON.parse(xhr.responseText).data.link;
+    deleteHash = JSON.parse(xhr.responseText).data.deletehash;
+    //alert(uploadedImageURL);
+    callback();
+  }
+}
+
 //傳送資料到firebase
 var sendData = function(dataToSend){
-  var now = getTimeData();
-  myFirebaseRef.child('lostFound').push().set(
-    {
-      title: dataToSend[0],
-      location: dataToSend[1],
-      describe: dataToSend[2],
-      time: now[0],
-      timestamp: now[1],
-      imageURL: getuploadedImageURL(),
-      deleteHash: getDeleteHash()
-    }
-  );
-  //alert("資料傳輸成功!");
-  finishLoading(); //傳輸完成
+  try{
+    var now = getTimeData();
+    myFirebaseRef.child('lostFound').push().set(
+      {
+        title: dataToSend[0],
+        location: dataToSend[1],
+        describe: dataToSend[2],
+        time: now[0],
+        timestamp: now[1],
+        imageURL: getuploadedImageURL(),
+        deleteHash: getDeleteHash()
+      }
+    );
+    //alert("資料傳輸成功!");
+    finishLoading(); //傳輸完成
+  }
+  catch(e){
+    alert(e.message);
+  }
 }
 
 //取得現在的時間資料

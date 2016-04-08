@@ -7,9 +7,6 @@
 </head>
 
 <body>
-  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-  <script src="./js/jquery-2.2.2.js"></script>
-  <script src="./js/app.js"></script>
   <header>
   </header>
   <section>
@@ -23,7 +20,7 @@
   </div>
   <div id="submit_area">
     <div id="imageContainer"><img src="" alt=""></div><!--顯示圖片的地方-->
-    <input type='file' accept='image/*' onchange='openFile(event)'><br><!--選擇檔案的按鈕-->
+    <input type='file' accept='image/*' id="openFile"><br><!--選擇檔案的按鈕-->
     <div id="inputfield">
       標題: <input type="text" size="20" id="title">
       地點: <input type="text" size="20" id="location"><br>
@@ -47,5 +44,8 @@
   </table>
   <!--Experiment Section,pls ignore-->
 
+  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+  <script src="./js/jquery-2.2.2.js"></script>
+  <script src="./js/app.js"></script>
 </body>
 </html>
