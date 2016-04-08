@@ -6,7 +6,9 @@ var main = function() {
   $('#submit').click(
     function(){
       var dataToSend = [$('#title').val(),$('#location').val(),$('#describe').val()];//因為上傳圖片需要時間，所以把要傳的東西在清空之前存起來
+      beginLoading();
       uploadImage(imageToUpload, function(){sendData(dataToSend);}); //圖片上傳完成後才會呼叫sendData
+      //結束在sendData內
       $('#title').val("");
       $('#location').val("");
       $('#describe').val("");
@@ -37,7 +39,7 @@ var main = function() {
           addDataToTable(entry);
         }
       );
-    });
+  });
 
     //這個在每次有資料增加時會執行
     myFirebaseRef.child("lostFound").on("child_added",
@@ -53,9 +55,8 @@ var openFile = function(event) {
   var input = event.target;
   var reader = new FileReader();
   reader.onload = function(e){ //讀取完檔案時
-    var canvas = document.getElementById("canvas");
+    var canvas = document.createElement('canvas');
     var context = canvas.getContext("2d");
-    context.clearRect(0, 0, canvas.width, canvas.height); //清掉canvas
     var img = new Image();
     img.crossOrigin = 'anonymous';
     img.src = reader.result;
@@ -129,7 +130,8 @@ var sendData = function(dataToSend){
       deleteHash: getDeleteHash()
     }
   );
-  alert("資料傳輸成功!");
+  //alert("資料傳輸成功!");
+  finishLoading(); //傳輸完成
 }
 
 //取得現在的時間資料
@@ -177,38 +179,48 @@ var getDeleteHash = function(){
 }
 
 //創造一個img元素放縮圖並且連結到原圖
-var getImageThumbnailElement = function(imageURL){
-  var link = $('<a>');
+var getImageThumbnailElement = function(data){
+  var imageURL = data.val().imageURL;
   if(imageURL != null){
-    console.log(imageURL);
-    var fileType = imageURL.slice(imageURL.length - 4, imageURL.length);
-    var thumbnailURL;
-    if(fileType == ".png"){
-      thumbnailURL = imageURL.replace(".png","m.png"); //縮圖的網只是在檔名後加m
-    }
-    else if(fileType == ".jpg"){
-      thumbnailURL = imageURL.replace(".jpg","m.jpg");
-    }
-    else{
-      thumbnailURL = "";
-    }
+    var getFileType = imageURL.split("/")[3].split(".")[1];
+    var thumbnailURL = imageURL.replace("." + getFileType, "m." + getFileType); //在副檔名前加m以取得縮圖網址
     var element = $('<img>');
-    link.append($('<img>').attr("src", thumbnailURL));
-    link.attr("href", imageURL);
-    return link;
+    element.attr("src", thumbnailURL);
+    return element;
   }
   else{
-    link.text("<沒有圖片>");
-    return link;
+    return $('<p>').text("<沒有圖片>");
   }
+}
+
+var getItemInfoURLElement = function(data){
+  var link = $('<a>').text("詳細資訊")
+  link.attr("href", "./item.html?id=" + data.key());
+  return link //取得該物品詳細資料連結元素
 }
 
 var addDataToTable = function(data){ //把資料加到table中顯示
   var newTableRow = $('<tr>');
-  newTableRow.append(getImageThumbnailElement(data.val().imageURL));
+  newTableRow.append(getImageThumbnailElement(data));
   newTableRow.append($('<td>').text(data.val().title));
   newTableRow.append($('<td>').text(data.val().location));
-  newTableRow.append($('<td>').text(data.val().describe));
   newTableRow.append($('<td>').text(data.val().time));
+  newTableRow.append(getItemInfoURLElement(data));
   $('#entries').prepend(newTableRow);
+}
+
+//開始傳輸時叫出讀取畫面並把輸入區隱藏
+var beginLoading = function(){
+  var submitArea = $('#submit_area');
+  var loadindDiv = $('#loading');
+  loadindDiv.css("width", submitArea.css("height"));
+  loadindDiv.css("height", submitArea.css("height"));
+  submitArea.hide();
+  loadindDiv.show();
+}
+
+//結束傳輸時隱藏讀取畫面並還原輸入區
+var finishLoading = function(){
+  $('#loading').hide();
+  $('#submit_area').show();
 }
