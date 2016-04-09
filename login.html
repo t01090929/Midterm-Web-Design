@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>後台管理</title>
+  <link type="text/css" rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+
+  <div id="modLogin">
+    帳號: <input type="text" size="20" id="id">
+    密碼: <input type="password" size="10" id="pw">
+    <button id="login">登入</button>
+  </div>
+  <table id="dataTable"><!--顯示資料的地方-->
+    <thead>
+      <tr>
+        <th>圖</th>
+        <th>標題</th>
+        <th>地點</th>
+        <th>時間</th>
+        <th>內容</th>
+        <th>刪除</th>
+      </tr>
+    </thead>
+    <tbody id="entries">
+    </tbody>
+  </table>
+
+  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+  <script src="./js/jquery-2.2.2.js"></script>
+  <script src="./js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+#dataTable {
+  display: none;
+}
+
+.deleteBtn {
+  display: inline-block;
+}

@@ -122,21 +122,6 @@ var uploadImage = function(imageData, callback){
   }
 }
 
-var uploadImageXHR = function(imageData, callback){
-  var formData = new FormData();
-  formData.append("image", imageData);
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "https://api.imgur.com/3/image.json");
-  xhr.setRequestHeader('Authorization', 'Client-ID 67c240c58b566fe');
-  xhr.send(formData);
-  xhr.onload = function () {
-    uploadedImageURL = JSON.parse(xhr.responseText).data.link;
-    deleteHash = JSON.parse(xhr.responseText).data.deletehash;
-    //alert(uploadedImageURL);
-    callback();
-  }
-}
-
 //傳送資料到firebase
 var sendData = function(dataToSend){
   try{
