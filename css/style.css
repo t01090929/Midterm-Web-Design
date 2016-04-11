@@ -1,0 +1,56 @@
+#navbar {
+  background-color: black;
+  height: 100px;
+}
+
+#navbar h1 {
+  margin: 0px;
+}
+
+.item {
+  padding: 0.5em;
+}
+
+.item a {
+  text-decoration:none;
+}
+
+.item > a > div {
+  width: 100%;
+  height: 350px;
+  padding: 0.5em;
+  text-align: center;
+  border-radius: 0.5em;
+  background-color: #80CBC4;
+  box-shadow: 2px 2px 0px #777777;
+}
+
+.item > a > div:hover {
+  background-color: #B2DFDB;
+}
+
+.item > a > div div {
+  height: 200px;
+}
+
+.item > a > div div img {
+  height: 100%;
+}
+
+/*.item div {
+  width:3em;
+  height: 100px;
+  background-color: black;
+}*/
+
+.container {
+  margin-top: 2em;
+}
+
+.center-float {
+  float: none;
+}
+
+.img-responsive {
+  display: inline-block;
+}

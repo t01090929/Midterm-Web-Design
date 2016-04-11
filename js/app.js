@@ -5,12 +5,13 @@ var myFirebaseRef;
 var main = function() {
   myFirebaseRef = new Firebase("https://s60912frank.firebaseio.com/");
   $('#openFile').on("change", openFile);
+
+
   $('#submit').click(
     function(){
       var dataToSend = [$('#title').val(),$('#location').val(),$('#describe').val()];//因為上傳圖片需要時間，所以把要傳的東西在清空之前存起來
       beginLoading();
       uploadImage(imageToUpload, function(){sendData(dataToSend);}); //圖片上傳完成後才會呼叫sendData
-      //uploadImageXHR(imageToUpload, function(){sendData(dataToSend);}); //圖片上傳完成後才會呼叫sendData
       //結束在sendData內
       $('#title').val("");
       $('#location').val("");
@@ -34,20 +35,20 @@ var main = function() {
   );
 
   //這個會把firebase中的資料顯示在網頁上
-  myFirebaseRef.child("lostFound").once("value",
+  /*myFirebaseRef.child("lostFound").once("value",
     function(snapshot){
-      $("#entries").find('tr').remove();
       snapshot.forEach(
         function(entry){
           addDataToTable(entry);
         }
       );
-  });
+  });*/
 
     //這個在每次有資料增加時會執行
     myFirebaseRef.child("lostFound").on("child_added",
     function(snapshot){
         addDataToTable(snapshot);
+        //console.log(snapshot.val().title);
     });
 };
 
@@ -84,7 +85,7 @@ var openFile = function(event) {
       var imgcontainer = $('#imageContainer');
       imgcontainer.children('img').attr("src", dataURL);
       imgcontainer.css("height", 300 * ratio);
-      console.log("GOOD TO GO!");
+
     }
   }
   reader.readAsDataURL(input.files[0]);
@@ -190,34 +191,35 @@ var getDeleteHash = function(){
 }
 
 //創造一個img元素放縮圖並且連結到原圖
-var getImageThumbnailElement = function(data){
+var getImageThumbnailLink = function(data){
   var imageURL = data.val().imageURL;
   if(imageURL != null){
     var getFileType = imageURL.split("/")[3].split(".")[1];
     var thumbnailURL = imageURL.replace("." + getFileType, "m." + getFileType); //在副檔名前加m以取得縮圖網址
-    var element = $('<img>');
-    element.attr("src", thumbnailURL);
-    return element;
+    return thumbnailURL;
   }
   else{
-    return $('<p>').text("<沒有圖片>");
+    return "./image/nopic.png";
   }
 }
 
-var getItemInfoURLElement = function(data){
-  var link = $('<a>').text("詳細資訊")
-  link.attr("href", "./item.html?id=" + data.key());
+var getItemInfoURL = function(data){
+  var link = "./item.html?id=" + data.key();
   return link //取得該物品詳細資料連結元素
 }
 
 var addDataToTable = function(data){ //把資料加到table中顯示
-  var newTableRow = $('<tr>');
-  newTableRow.append(getImageThumbnailElement(data));
-  newTableRow.append($('<td>').text(data.val().title));
-  newTableRow.append($('<td>').text(data.val().location));
-  newTableRow.append($('<td>').text(data.val().time));
-  newTableRow.append(getItemInfoURLElement(data));
-  $('#entries').prepend(newTableRow);
+  console.log(data.val().title);
+  var newItem = $('#itemTemplate').clone().prependTo('.container');
+  newItem.show();
+  newItem.attr("id", data.key());
+  newItem.children("a").attr("href", getItemInfoURL(data));
+  var mainDiv = newItem.children('a').children('div');
+  mainDiv.children("div").children("img").attr("src", getImageThumbnailLink(data));
+  mainDiv.children("h1").text(data.val().title);
+  mainDiv.children("h4").text(data.val().location);
+  mainDiv.children("p").text(data.val().time);
+  //$('#mainContainer').prepend(newItem);
 }
 
 //開始傳輸時叫出讀取畫面並把輸入區隱藏
