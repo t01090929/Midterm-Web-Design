@@ -7,6 +7,17 @@
   margin: 0px;
 }
 
+body {
+  background-image: url("./image/background.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+p {
+  display: inline-block;
+  margin: 0;
+}
+
 .item {
   padding: 0.5em;
 }
@@ -17,24 +28,26 @@
 
 .item > a > div {
   width: 100%;
-  height: 350px;
-  padding: 0.5em;
-  text-align: center;
-  border-radius: 0.5em;
-  background-color: #80CBC4;
-  box-shadow: 2px 2px 0px #777777;
-}
-
-.item > a > div:hover {
-  background-color: #B2DFDB;
-}
-
-.item > a > div div {
-  height: 200px;
-}
-
-.item > a > div div img {
   height: 100%;
+  padding: 0.5em;
+  /*text-align: center;*/
+  border-radius: 0.5em;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 0px #777777;
+  color: white;
+}
+
+.title {
+  margin: 2em;
+
+}
+
+.row {
+  box-sizing: border-box;
+}
+
+.hcenter {
+  text-align: center;
 }
 
 /*.item div {
@@ -44,13 +57,19 @@
 }*/
 
 .container {
-  margin-top: 2em;
+  margin-top: 0em;
+  /*text-align: center;*/
 }
 
-.center-float {
-  float: none;
+#floatImageContainer {
+  position: fixed;
+  /*padding: 1em;*/
+  display: none;
+  border: 3px solid black;
+  border-radius: 3px;
 }
 
-.img-responsive {
-  display: inline-block;
+#mainContainer {
+  background-image: url("./image/div_background.jpg");
+  background-size: 100%;
 }
