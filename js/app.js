@@ -194,13 +194,7 @@ var getImageThumbnailLink = function(data, option){
   var imageURL = data.val().imageURL;
   if(imageURL != null){
     var getFileType = imageURL.split("/")[3].split(".")[1];
-    if(option == "m"){
-      return imageURL.replace("." + getFileType, "m." + getFileType);
-    }
-    else if(option == "s"){
-      return imageURL.replace("." + getFileType, "s." + getFileType);
-    }
-    return "";
+    return imageURL.replace("." + getFileType, option + "." + getFileType);
   }
   else{
     return "";
@@ -213,30 +207,13 @@ var getItemInfoURL = function(data){
 }
 
 var addDataToTable = function(data){ //把資料加到table中顯示
-  var newItem = $('#itemTemplate').clone().prependTo('#mainContainer2');
+  var newItem = $('#itemTemplate').clone().prependTo('#mainContainer');
   newItem.removeAttr("id");
-  //newItem.hover(function(e) { itemHoverIn(getImageThumbnailLink(data), e); },itemHoverOut);
-  newItem.show();
-  /*newItem.children("a").attr("href", getItemInfoURL(data));
-  var mainDiv = newItem.children('a').children('div');
-  var imgLink = getImageThumbnailLink(data);
-  if(imgLink != ""){
-    mainDiv.children("div").children("img").attr("src", "./image/hasimage.png");
-    mainDiv.children("div").children("img").hover(function(e) { itemHoverIn(imgLink, e); },itemHoverOut);
-  }
-  else{
-    mainDiv.children("div").children("img").attr("src", "./image/nopic.png");
-  }
-  mainDiv.children("div").children("h1").text(data.val().title);
-  mainDiv.children("div").children("h4").text(data.val().location);
-  mainDiv.children("div").children("p").text(data.val().time);*/
-
-
-
   var imgThumbnail = newItem.find("img").first();
   imgThumbnail.attr("src", getImageThumbnailLink(data, "s"));
   imgThumbnail.hover(function(e) { itemHoverIn(getImageThumbnailLink(data, "m"), e); },itemHoverOut);
-  newItem.find("h1").text(data.val().title);
+  newItem.find("a").attr("href", "./item.html?id=" + data.key());
+  newItem.find("h1").text(data.val().title).click(function(){ showInfo(data) });
   var conter = 0;
   var dataP = [data.val().location,
                data.val().time,
@@ -247,10 +224,7 @@ var addDataToTable = function(data){ //把資料加到table中顯示
       $(this).text(dataP[conter]);
       conter++;
   });
-  /*newItem.find("p").first().text("拾獲地點:" + data.val().location);
-  newItem.find("p").first().next().text("拾獲時間:" + data.val().time);
-  newItem.find("p").first().next().next().text("拾獲人:" + "Gmin");
-  newItem.find("p").first().next().next().next().text("拾獲人:" + data.val().message);*/
+  newItem.slideDown(500);
 }
 
 var itemHoverIn = function(url, e){
