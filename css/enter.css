@@ -1,47 +1,54 @@
 html {
-  height:100%;
+  background-image: url(https://raw.githubusercontent.com/t01090929/Midterm-Web-Design/master/image/entrance_background.jpg);
+  background-size: 1920px 1200px;
+
 }
 
 body {
   height:100%;
 }
 
-#lostContainer {
-  background-color: #EF9A9A;
-  height:100%;
-  z-index: 0;
-}
-
-#foundContainer {
-  background-color: #90CAF9;
-  height: 100%;
-  z-index: 0;
-}
-
-#logoContainer {
-  width: 100%;
-  height: 100px;
-  position: absolute;
-  top: 1em;
-  left: 0;
-  z-index: 1;
-}
-
 #logo {
+  margin-top: 50px;
+  margin-bottom: 100px;
   height: 100%;
-  border: 1px solid black;
   position: relative;
+  text-align: center;
+}
+
+#button_container{
+  position: relative;
+  text-align: center;
 }
 
 #lostButton {
-  border: 1px solid black;
-  height: 4em;
+  background-color: white;
+  border: 1px solid white;
+  height: 550px;
+  width: 400px;
+  display: inline-block;
 }
 
-.row-45 {
-  height: 45%;
+#foundButton {
+  background-color: white;
+  border: 1px solid white;
+  height: 550px;
+  width: 400px;
+  display: inline-block;
+  margin-left: 10%;
 }
 
-.row-10 {
-  height: 25%;
+#lost_no{
+    display:none;
 }
+
+#found_o{
+    display:none;
+}
+
+.words{
+    float:left;
+    position:absolute;
+    margin-top: 15%;
+}
+

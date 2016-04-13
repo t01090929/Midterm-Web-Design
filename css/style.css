@@ -7,30 +7,43 @@
   margin: 0px;
 }
 
-body {
-  background-image: url("../image/background.jpg");
-  background-size: cover;
-  background-attachment: fixed;
-}
-
-p {
-  display: inline-block;
-  margin: 0;
+.page_title{
+    background-color:  black;
+    height: 100px;
+    width: 50%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 .item {
   padding: 0.5em;
 }
 
-.item > div {
+.item a {
+  text-decoration:none;
+}
+
+.item > a > div {
   width: 100%;
-  height: 100%;
+  height: 350px;
   padding: 0.5em;
-  /*text-align: center;*/
+  text-align: center;
   border-radius: 0.5em;
-  background-color: rgba(0, 0, 0, 0.2);
-  box-shadow: 1px 1px 0px #777777;
-  color: white;
+  background-color: #80CBC4;
+  box-shadow: 2px 2px 0px #777777;
+}
+
+.item > a > div:hover {
+  background-color: #B2DFDB;
+}
+
+.item > a > div div {
+  height: 200px;
+}
+
+.item > a > div div img {
+  height: 100%;
 }
 
 /*.item div {
@@ -39,33 +52,18 @@ p {
   background-color: black;
 }*/
 
-.imgContainer {
-  text-align: center;
-}
-
-.imgContainer img {
-  display: inline-block;;
-}
-
 .container {
-  margin-top: 0em;
-  /*text-align: center;*/
+  margin-top: 2em;
 }
 
-#floatImageContainer {
-  position: fixed;
-  /*padding: 1em;*/
-  display: none;
-  border: 3px solid black;
-  border-radius: 3px;
+.center-float {
+  float: none;
 }
 
-#mainContainer {
-  background-image: url("../image/div_background.jpg");
-  background-size: 100%;
+.img-responsive {
+  display: inline-block;
 }
-
-/*post.cssâ†“*/
+/*post.css¡õ*/
 #button_container{
     text-align: center;
 }
@@ -84,4 +82,4 @@ p {
   display: inline-block;
   margin-left: 100px;
 }
-/*post.cssâ†‘*/
+/*post.css¡ô*/

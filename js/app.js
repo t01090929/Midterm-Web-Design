@@ -6,6 +6,7 @@ var main = function() {
   myFirebaseRef = new Firebase("https://s60912frank.firebaseio.com/");
   $('#openFile').on("change", openFile);
 
+
   $('#submit').click(
     function(){
       var dataToSend = [$('#title').val(),$('#location').val(),$('#describe').val()];//因為上傳圖片需要時間，所以把要傳的東西在清空之前存起來
@@ -190,14 +191,15 @@ var getDeleteHash = function(){
 }
 
 //創造一個img元素放縮圖並且連結到原圖
-var getImageThumbnailLink = function(data, option){
+var getImageThumbnailLink = function(data){
   var imageURL = data.val().imageURL;
   if(imageURL != null){
     var getFileType = imageURL.split("/")[3].split(".")[1];
-    return imageURL.replace("." + getFileType, option + "." + getFileType);
+    var thumbnailURL = imageURL.replace("." + getFileType, "m." + getFileType); //在副檔名前加m以取得縮圖網址
+    return thumbnailURL;
   }
   else{
-    return "";
+    return "./image/nopic.png";
   }
 }
 
@@ -207,46 +209,17 @@ var getItemInfoURL = function(data){
 }
 
 var addDataToTable = function(data){ //把資料加到table中顯示
-  var newItem = $('#itemTemplate').clone().prependTo('#mainContainer');
-  newItem.removeAttr("id");
-  var imgThumbnail = newItem.find("img").first();
-  imgThumbnail.attr("src", getImageThumbnailLink(data, "s"));
-  imgThumbnail.hover(function(e) { itemHoverIn(getImageThumbnailLink(data, "m"), e); },itemHoverOut);
-  newItem.find("a").attr("href", "./item.html?id=" + data.key());
-  newItem.find("h1").text(data.val().title).click(function(){ showInfo(data) });
-  var conter = 0;
-  var dataP = [data.val().location,
-               data.val().time,
-               "Gmin",
-               data.val().describe];
-  newItem.find("p").each(
-    function(){
-      $(this).text(dataP[conter]);
-      conter++;
-  });
-  newItem.slideDown(500);
-}
-
-var itemHoverIn = function(url, e){
-  var div = $('#floatImageContainer');
-  var img = div.children("img");
-  img.attr("src", url);
-  img.on("load", function(){
-    div.css("left", e.clientX);
-    if(e.clientY + div.height() + 100 > $(window).height()){
-      div.css("top", e.clientY - div.height() - 50);
-    }
-    else{
-      div.css("top", e.clientY + 100);
-    }
-    div.stop();
-    div.fadeIn(100);
-  });
-}
-
-var itemHoverOut = function(){
-  $('#floatImageContainer').stop();
-  $('#floatImageContainer').fadeOut(100);
+  console.log(data.val().title);
+  var newItem = $('#itemTemplate').clone().prependTo('.container');
+  newItem.show();
+  newItem.attr("id", data.key());
+  newItem.children("a").attr("href", getItemInfoURL(data));
+  var mainDiv = newItem.children('a').children('div');
+  mainDiv.children("div").children("img").attr("src", getImageThumbnailLink(data));
+  mainDiv.children("h1").text(data.val().title);
+  mainDiv.children("h4").text(data.val().location);
+  mainDiv.children("p").text(data.val().time);
+  //$('#mainContainer').prepend(newItem);
 }
 
 //開始傳輸時叫出讀取畫面並把輸入區隱藏
