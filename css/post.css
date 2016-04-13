@@ -1,0 +1,56 @@
+body{
+    left: 0;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+#left_page{
+  background-color: black;
+  left: -100%;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  z-index:1;
+}
+
+#right_page{
+  background-color: black;
+  right: -100%;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  z-index:1;
+}
+
+#button_container{
+  position: relative;
+  text-align: center;
+  width: inherit;
+}
+
+#lostButton {
+  background-color: black;
+  border: 1px solid white;
+  height: 550px;
+  width: 400px;
+  display: inline-block;
+}
+
+#foundButton {
+  background-color: black;
+  border: 1px solid white;
+  height: 550px;
+  width: 400px;
+  display: inline-block;
+  margin-left: 10%;
+}
+
+#text_in_left{
+    color: white;
+    font-size: 20px;
+}
+#text_in_right{
+    color: white;
+    font-size: 20px;
+}

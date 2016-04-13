@@ -5,17 +5,32 @@
   <title>北科Lost&amp;Found</title>
   <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <link rel="stylesheet" type="text/css" href="./css/post.css">
 </head>
 <body>
+    <script src="./js/jquery-2.2.2.js"></script>
+    <script src="./js/post.js"></script>
   <div class=".container-fluid" id="navbar">
       <h1 class="col-lg-3" style="color:white">I AM NAVBAR</h1>
   </div>
+    <div id="left_page">
+        <p id="text_in_left">輸入貼文資料的頁面<br>點擊文字返回選擇頁</p>
+    </div>
+    <div id="right_page">
+        <p id="text_in_right">輸入貼文資料的頁面<br>點擊文字返回選擇頁</p>
+    </div>
+
+
    <div class="page_title">
        <h1 style="color:white">What kind of post do you want to post?</h1>
    </div>
    <div id="button_container">
-       <div id="lost_post_button">I lost something</div>
-       <div id="found_post_button">I found something</div>
+       <div id="lostButton">
+           <p id="text_in_left">點這裡表示你遺失東西</p>
+       </div>
+       <div id="foundButton">
+           <p id="text_in_left">點這裡表示你撿到東西</p>
+       </div>
    </div>
 </body>
 </html>
