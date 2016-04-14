@@ -11,14 +11,14 @@
   var myFirebaseRef = new Firebase("https://s60912frank.firebaseio.com/");
   $(document).ready(
     function(){
-      //alert(getUrlVars()["id"]);
-      myFirebaseRef.child("lostFound/" + getUrlVars()["id"]).on("value",
+      var vars = getUrlVars();
+      myFirebaseRef.child("lostFound/" + vars["type"] + "/" + vars["id"]).on("value",
         function(snapshot){
-          //function
           $('#image').attr("src",snapshot.val().imageURL);
           $('#title').text(snapshot.val().title);
           $('#location').text(snapshot.val().location);
           $('#time').text(snapshot.val().time);
+          $('#who').text(snapshot.val().who);
           $('#describe').text(snapshot.val().describe);
       });
     }
@@ -43,6 +43,7 @@
   <p id="title"></p>
   <p id="location"></p>
   <p id="time"></p>
+  <p id="who"></p>
   <p id="describe"></p>
 </body>
 </html>

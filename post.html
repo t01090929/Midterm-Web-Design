@@ -1,36 +1,116 @@
-﻿<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="zh-tw">
+
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>北科Lost&amp;Found</title>
   <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="./css/style.css">
   <link rel="stylesheet" type="text/css" href="./css/post.css">
 </head>
+
 <body>
-    <script src="./js/jquery-2.2.2.js"></script>
-    <script src="./js/post.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+  <script src="./js/jquery-2.2.2.js"></script>
+  <script src="./js/post.js"></script>
   <div class=".container-fluid" id="navbar">
-      <h1 class="col-lg-3" style="color:white">I AM NAVBAR</h1>
+    <h1 class="col-lg-3" style="color:white">I AM NAVBAR</h1>
   </div>
-    <div id="left_page">
-        <p id="text_in_left">輸入貼文資料的頁面<br>點擊文字返回選擇頁</p>
+  <input type='file' accept='image/*' id="openFile" style="display:none">
+  <div id="left_page" class="page">
+    <div style="position:relative">
+      <div class="exit" id="exit_left"></div>
+      <div class="container col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+        <div class="row">
+          <div class="inputArea col-lg-6 col-xs-12">
+            <p>標題</p>
+            <br>
+            <input type="text" id="title">
+            <p>地點</p>
+            <br>
+            <input type="text" id="location">
+            <p>遺失人</p>
+            <br>
+            <input type="text" id="who">
+          </div>
+
+          <div class="imgContainer col-lg-6 col-xs-12">
+            <p>點擊此處上傳圖片</p>
+            <img src="" alt="">
+          </div>
+        </div>
+
+        <div class="row">
+          <p>其他資訊(選填)</p>
+          <br>
+          <textarea id="describe" rows="4" cols="40"></textarea>
+        </div>
+
+        <div class="row" id="submitContainer">
+          <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+            <p>送出</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="right_page">
-        <p id="text_in_right">輸入貼文資料的頁面<br>點擊文字返回選擇頁</p>
+  </div>
+
+  <div id="right_page" class="page">
+    <div style="position:relative">
+      <div class="exit" id="exit_right"></div>
+      <div class="container col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+        <div class="row">
+          <div class="inputArea col-lg-6 col-xs-12">
+            <p>標題</p>
+            <br>
+            <input type="text" id="title">
+            <p>地點</p>
+            <br>
+            <input type="text" id="location">
+            <p>拾獲人</p>
+            <br>
+            <input type="text" id="who">
+          </div>
+
+          <div class="imgContainer col-lg-6 col-xs-12">
+            <p>點擊此處上傳圖片</p>
+            <img src="" alt="">
+          </div>
+        </div>
+
+        <div class="row">
+          <p>其他資訊(選填)</p>
+          <br>
+          <textarea id="describe" rows="4" cols="40"></textarea>
+        </div>
+
+        <div class="row" id="submitContainer">
+          <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+            <p>送出</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container transparent">
+    <div class="row">
+      <div class="page_title col-lg-6 col-lg-offset-3 col-xs-10 col-xs-offset-1">
+        <h1 style="color:white">What kind of post do you want to post?</h1>
+      </div>
     </div>
 
-
-   <div class="page_title">
-       <h1 style="color:white">What kind of post do you want to post?</h1>
-   </div>
-   <div id="button_container">
-       <div id="lostButton">
-           <p id="text_in_left">點這裡表示你遺失東西</p>
-       </div>
-       <div id="foundButton">
-           <p id="text_in_left">點這裡表示你撿到東西</p>
-       </div>
-   </div>
+    <div class="row" id="button_container">
+      <div id="lostButton" class="col-md-4 col-md-offset-1 col-xs-10 col-xs-offset-1">
+        <p id="text_in_left">點這裡表示你遺失東西</p>
+      </div>
+      <div id="foundButton" class="col-md-4 col-md-offset-2 col-xs-10 col-xs-offset-1">
+        <p id="text_in_left">點這裡表示你撿到東西</p>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>

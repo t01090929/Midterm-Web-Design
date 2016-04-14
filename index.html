@@ -1,33 +1,26 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Document</title>
-  <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./css/style.css">
+  <title>北科Lost&amp;Found入口</title>
+  <link rel="stylesheet" href="./css/enter.css">
 </head>
 <body>
-  <div class=".container-fluid" id="navbar">
-    <h1 class="col-lg-3" style="color:white">I AM NAVBAR</h1>
-  </div>
-  <div class="container" id="mainContainer">
-    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 item" id="itemTemplate" style="display:none">
-      <a href="">
-        <div>
-          <div>
-            <img src="" alt="" class="img-responsive img-rounded">
-          </div>
-          <h1></h1>
-          <h4></h4>
-          <p></p>
-        </div>
-      </a>
+    <script src="./js/jquery-2.2.2.js"></script>
+    <script src="./js/enter.js"></script>
+    <div id="logo">
+        <img src="https://raw.githubusercontent.com/t01090929/Midterm-Web-Design/master/image/logo.png">
     </div>
-  </div>
-
-  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-  <script src="./js/jquery-2.2.2.js"></script>
-  <script src="./js/app.js"></script>
+    <div id="button_container">
+      <div id="lostButton">
+          <img id="lost_o" class="words" src="https://raw.githubusercontent.com/t01090929/Midterm-Web-Design/master/image/lost_word.png">
+          <img id="lost_no" class="words" src="https://raw.githubusercontent.com/t01090929/Midterm-Web-Design/master/image/lost_word2.png">
+      </div>
+      <div id="foundButton">
+          <img id="found_no" class="words" src="https://raw.githubusercontent.com/t01090929/Midterm-Web-Design/master/image/found_word2.png">
+          <img id="found_o" class="words" src="https://raw.githubusercontent.com/t01090929/Midterm-Web-Design/master/image/found_word.png">
+      </div>
+    </div>
 </body>
 </html>

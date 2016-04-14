@@ -1,61 +1,154 @@
-html {
-  background-image: url(https://raw.githubusercontent.com/t01090929/Midterm-Web-Design/master/image/entrance_background.jpg);
-  background-size: 1920px 1200px;
-}
+body {
+   background-image: url("../image/entrance_background.jpg");
+   background-size: 1920px 1200px;
+ }
 
-body{
-    left: 0;
-    margin: 0;
-    overflow: hidden;
-    position: relative;
+.transparent{
+  background-color: rgba(0, 0, 0, 0);
 }
 
 #left_page{
-  background-color: black;
   left: -100%;
-  height: 100%;
-  position: fixed;
-  width: 100%;
-  z-index:1;
+
 }
 
 #right_page{
-  background-color: black;
-  right: -100%;
-  height: 100%;
-  position: fixed;
+  left: 100%;
+}
+
+.page {
+  display: none;
+  position: absolute;
   width: 100%;
+  min-height: 100%;
   z-index:1;
+  background-image: url("../image/div_background.jpg");
+  background-size: cover;
+}
+
+.page p {
+  color:white;
+  margin: 0;
+  font-size: 2em;
+}
+
+.page input {
+  transition: .2s ease-in;
+  margin: 0px;
+  width: 100%;
+  outline: none;
+  border: 0px solid white;
+  border-bottom: 1px solid #333333;
+  border-right: 1px solid #333333;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 1.5em;
+  margin-top: -25px;
+  margin-bottom: 15px;
+}
+
+.page input:focus {
+  transition: .2s ease-in;
+  outline: none;
+  border: 0px solid white;
+  border-bottom: 1px solid #333333;
+  border-right: 1px solid #333333;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.page textarea {
+  transition: .2s ease-in;
+  color: white;
+  font-size: 1.5em;
+  margin: 0px;
+  width: 100%;
+  border: 0px solid white;
+  border-bottom: 1px solid #333333;
+  border-right: 1px solid #333333;
+  background-color: rgba(0, 0, 0, 0.2);
+  resize: none;
+}
+
+.page textarea:focus {
+  transition: .2s ease-in;
+  outline: none;
+  border: 0px solid white;
+  border-bottom: 1px solid #333333;
+  border-right: 1px solid #333333;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.imgContainer {
+  height: 300px;
+  cursor: pointer;
+  border-bottom: 1px solid #333333;
+  border-right: 1px solid #333333;
+  background-color: rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.imgContainer img {
+  max-width: 100%;
+  max-height: 100%
+}
+
+.imgContainer p {
+  margin-top: 130px;
+}
+
+#submitContainer {
+  margin-top: 1em;
+}
+
+#submitContainer div {
+  height: 100px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid #333333;
+  border-right: 2px solid #333333;
+  text-align: center;
+}
+
+#submitContainer div p {
+  color: white;
+  font-size: 2em;
+  margin-top: 25px;
+}
+
+#submitContainer div:hover {
+  transition: .2s ease-in;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#submitContainer div:active {
+  transition: .2s ease-in;
+  transform: translate(1px, 1px);
+  border-bottom: 1px solid #333333;
+  border-right: 1px solid #333333;
 }
 
 #button_container{
-  position: relative;
   text-align: center;
-  width: inherit;
 }
 
 #lostButton {
-  background-image:url("https://raw.githubusercontent.com/t01090929/Midterm-Web-Design/master/image/old_paper.jpg");
+  background-image:url("../image/old_paper.jpg");
   background-size:cover;
   height: 550px;
-  width: 400px;
-  display: inline-block;
 }
 
 #foundButton {
-  background-image:url("https://raw.githubusercontent.com/t01090929/Midterm-Web-Design/master/image/old_paper.jpg");
+  background-image:url("../image/old_paper.jpg");
   background-size:cover;
   height: 550px;
-  width: 400px;
-  display: inline-block;
-  margin-left: 10%;
 }
 
-#text_in_left{
-    color: white;
-    font-size: 20px;
-}
-#text_in_right{
-    color: white;
-    font-size: 20px;
+.exit {
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 50px;
+  width: 50px;
+  background-color: black;
 }
