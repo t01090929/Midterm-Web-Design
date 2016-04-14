@@ -1,3 +1,8 @@
+html {
+  background-image: url(https://raw.githubusercontent.com/t01090929/Midterm-Web-Design/master/image/entrance_background.jpg);
+  background-size: 1920px 1200px;
+}
+
 body{
     left: 0;
     margin: 0;
@@ -30,16 +35,16 @@ body{
 }
 
 #lostButton {
-  background-color: black;
-  border: 1px solid white;
+  background-image:url("https://raw.githubusercontent.com/t01090929/Midterm-Web-Design/master/image/old_paper.jpg");
+  background-size:cover;
   height: 550px;
   width: 400px;
   display: inline-block;
 }
 
 #foundButton {
-  background-color: black;
-  border: 1px solid white;
+  background-image:url("https://raw.githubusercontent.com/t01090929/Midterm-Web-Design/master/image/old_paper.jpg");
+  background-size:cover;
   height: 550px;
   width: 400px;
   display: inline-block;
