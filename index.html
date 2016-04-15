@@ -4,22 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>北科Lost&amp;Found入口</title>
-  <link rel="stylesheet" href="./css/enter.css">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
     <script src="./js/jquery-2.2.2.js"></script>
-    <script src="./js/enter.js"></script>
-    <div id="logo">
-        <img src="https://raw.githubusercontent.com/t01090929/Midterm-Web-Design/master/image/logo.png">
-    </div>
-    <div id="button_container">
-      <div id="lostButton">
-          <img id="lost_o" class="words" src="https://raw.githubusercontent.com/t01090929/Midterm-Web-Design/master/image/lost_word.png">
-          <img id="lost_no" class="words" src="https://raw.githubusercontent.com/t01090929/Midterm-Web-Design/master/image/lost_word2.png">
+    <script src="./js/index.js"></script>
+
+    <div class="container">
+      <div class="row">
+        <div id="logo" class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
+            <img src="./image/logo.png" class="img-responsive">
+        </div>
       </div>
-      <div id="foundButton">
-          <img id="found_no" class="words" src="https://raw.githubusercontent.com/t01090929/Midterm-Web-Design/master/image/found_word2.png">
-          <img id="found_o" class="words" src="https://raw.githubusercontent.com/t01090929/Midterm-Web-Design/master/image/found_word.png">
+
+      <div class="row" id="button_container">
+        <a href="./lostlist.html">
+          <div id="lostButton" class="col-md-4 col-md-offset-1 col-xs-10 col-xs-offset-1">
+            <img id="lost_o" class="words img-responsive" src="./image/lost_word.png">
+            <img id="lost_no" class="words img-responsive" src="./image/lost_word2.png">
+          </div>
+        </a>
+        <a href="./foundlist.html">
+          <div id="foundButton" class="col-md-4 col-md-offset-2 col-xs-10 col-xs-offset-1">
+            <img id="found_no" class="words img-responsive" src="./image/found_word2.png">
+            <img id="found_o" class="words img-responsive" src="./image/found_word.png">
+          </div>
+        </a>
       </div>
     </div>
 </body>

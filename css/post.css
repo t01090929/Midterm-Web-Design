@@ -1,10 +1,18 @@
 body {
-   background-image: url("../image/entrance_background.jpg");
+   background-image: url("../image/background.jpg");
    background-size: 1920px 1200px;
- }
+}
 
 .transparent{
   background-color: rgba(0, 0, 0, 0);
+}
+
+.page_title{
+  background-color:  black;
+  height: 100px;
+  text-align: center;
+  margin-bottom: 1em;
+  margin-top: 1em;
 }
 
 #left_page{
@@ -151,4 +159,20 @@ body {
   height: 50px;
   width: 50px;
   background-color: black;
+}
+
+.loading {
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  position: fixed;
+  text-align: center;
+  z-index: 99;
+  display: none;
+}
+
+.martop1em {
+  margin-top: 1em;
 }

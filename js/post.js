@@ -66,6 +66,7 @@ var main = function () {
         alert("請填入完整資料!");
       }
       else{
+        beginLoading();
         dataToSend = [inputArea.find('#title').val(), inputArea.find('#location').val(), inputArea.find('#who').val(), $("#" + whichPageIn).find("#describe").val()];
         var dbloc;
         if(whichPageIn == "left_page"){
@@ -78,12 +79,43 @@ var main = function () {
       }
     }
   );
+
+  $("#sideBar").css(
+    {
+      height: $(window).height() - 85,
+      width: $(window).width() * 0.8,
+      top: 85,
+      left: $(window).width()
+    }
+  );
+  $('#menuIcon').click(
+    function(){
+      var bar = $("#sideBar");
+      bar.stop();
+      if(bar.is(':hidden')){
+        bar.show();
+        bar.animate(
+          {
+            left: $(window).width() * 0.2
+          },300
+        );
+      }
+      else {
+        bar.animate(
+          {
+            left: $(window).width()
+          },300,function(){bar.hide();}
+        );
+      }
+    }
+  );
 }
 
 $(document).ready(main);
 
 var uploadImage = function(imageData, callback){
-  if(imageData != null){
+  console.log(imageData);
+  if(imageData.length > 1){
     $.ajax({
       url: 'https://api.imgur.com/3/image',
       type: 'POST',
@@ -113,26 +145,28 @@ var uploadImage = function(imageData, callback){
 }
 
 var sendData = function(loc){
-  try{
-    var now = getTimeData();
-    myFirebaseRef.child(loc).push().set(
-      {
-        title: dataToSend[0],
-        location: dataToSend[1],
-        who: dataToSend[2],
-        describe: dataToSend[3],
-        time: now[0],
-        timestamp: now[1],
-        imageURL: getuploadedImageURL(),
-        deleteHash: getDeleteHash()
+  var now = getTimeData();
+  myFirebaseRef.child(loc).push().set(
+    {
+      title: dataToSend[0],
+      location: dataToSend[1],
+      who: dataToSend[2],
+      describe: dataToSend[3],
+      time: now[0],
+      timestamp: now[1],
+      imageURL: getuploadedImageURL(),
+      deleteHash: getDeleteHash()
+    },
+    function(error){
+      endLoading();
+      if (error) {
+        alert("傳輸失敗!");
       }
-    );
-    //alert("資料傳輸成功!");
-    //finishLoading(); //傳輸完成
-  }
-  catch(e){
-    alert(e.message);
-  }
+      else {
+        alert("傳輸成功!");
+      }
+    }
+  );
 }
 
 //取得現在的時間資料
@@ -177,4 +211,12 @@ var getDeleteHash = function(){
   else{
     return null;
   }
+}
+
+var beginLoading = function(){
+  $(".loading").fadeIn(300);
+}
+
+var endLoading = function(){
+  $(".loading").fadeOut(300);
 }

@@ -3,47 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <title>北科Lost&amp;Found</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./css/nav_sidebar.css">
+  <link rel="stylesheet" type="text/css" href="./css/item.css">
 </head>
 <body>
   <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
   <script src="./js/jquery-2.2.2.js"></script>
-  <script>
-  var myFirebaseRef = new Firebase("https://s60912frank.firebaseio.com/");
-  $(document).ready(
-    function(){
-      var vars = getUrlVars();
-      myFirebaseRef.child("lostFound/" + vars["type"] + "/" + vars["id"]).on("value",
-        function(snapshot){
-          $('#image').attr("src",snapshot.val().imageURL);
-          $('#title').text(snapshot.val().title);
-          $('#location').text(snapshot.val().location);
-          $('#time').text(snapshot.val().time);
-          $('#who').text(snapshot.val().who);
-          $('#describe').text(snapshot.val().describe);
-      });
-    }
-  );
+  <script src="./js/item.js"></script>
+  <div class=".container-fluid" id="navbar">
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
+      <img src="./image/logo.png">
+    </div>
+    <div class="col-lg-9 col-md-9 col-sm-9">
+      <div class="row row-martop hidden-xs"></div>
+      <div class="col-xs-12 hidden-xs">
+        <p class="col-sm-2 col-sm-offset-1"><a href="./index.html">Home</a></p>
+        <p class="col-sm-2"><a href="./lostlist.html">Lost</a></p>
+        <p class="col-sm-2"><a href="./foundlist.html">Found</a></p>
+        <p class="col-sm-2"><a href="">AboutUs</a></p>
+        <p class="col-sm-2"><a href="./post.html">Post</a></p>
+      </div>
+      <div class="visible-xs-block col-xs-2 col-xs-offset-7" id="menuIcon">
+        <img src="./image/menu.png">
+      </div>
+    </div>
+  </div>
 
-  function getUrlVars()
-  {
-    var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++)
-    {
-        hash = hashes[i].split('=');
-        vars.push(hash[0]);
-        vars[hash[0]] = hash[1];
-    }
-    return vars;
-  }
-  </script>
+  <div id="sideBar">
+    <p><a href="./index.html">Home</a></p><br>
+    <p><a href="./lostlist.html">Lost</a></p><br>
+    <p><a href="./foundlist.html">Found</a></p><br>
+    <p><a href="">AboutUs</a></p><br>
+    <p><a href="./post.html">Post</a></p><br>
+  </div>
+
+  <div id="mainContainer" class="container">
+    <div class="loading">
+      <img src="./image/loading.gif">
+    </div>
+    <div style="position:relative">
+      <div class="exit" id="exit_left"></div>
+      <div class="container col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+        <div class="row">
+          <div class="inputArea col-lg-6 col-xs-12">
+            <p>標題</p><br>
+            <div id="title"></div>
+            <p>時間</p><br>
+            <div id="time"></div>
+            <p>地點</p><br>
+            <div id="location"></div>
+            <p>遺失人</p><br>
+            <div id="who"></div>
+          </div>
+
+          <div class="imgContainer col-lg-6 col-xs-12">
+            <a href=""><img src="" alt=""></a>
+          </div>
+        </div>
+
+        <div class="row">
+          <p>其他資訊</p>
+          <br>
+          <div id="describe"></div>
+        </div>
 
 
-  <img src="" id="image">
-  <p id="title"></p>
-  <p id="location"></p>
-  <p id="time"></p>
-  <p id="who"></p>
-  <p id="describe"></p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,0 +1,81 @@
+body {
+  background-image: url("../image/background.jpg");
+  background-size: 1920px 1200px;
+}
+
+#mainContainer {
+  margin-top: 1em;
+}
+
+#mainContainer p {
+  color:white;
+  margin: 0;
+  font-size: 2em;
+}
+
+.inputArea div {
+  margin: 0px;
+  width: 100%;
+  height: 1.5em;
+  outline: none;
+  border: 0px solid white;
+  border-bottom: 1px solid #333333;
+  border-right: 1px solid #333333;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 1.5em;
+  margin-top: -25px;
+  margin-bottom: 15px;
+}
+
+#describe {
+  transition: .2s ease-in;
+  color: white;
+  font-size: 1.5em;
+  margin: 0px;
+  width: 100%;
+  height: 4.5em;
+  border: 0px solid white;
+  border-bottom: 1px solid #333333;
+  border-right: 1px solid #333333;
+  background-color: rgba(0, 0, 0, 0.2);
+  resize: none;
+}
+
+#mainContainer textarea:focus {
+  transition: .2s ease-in;
+  outline: none;
+  border: 0px solid white;
+  border-bottom: 1px solid #333333;
+  border-right: 1px solid #333333;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.imgContainer {
+  height: 300px;
+  cursor: pointer;
+  border-bottom: 1px solid #333333;
+  border-right: 1px solid #333333;
+  background-color: rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.imgContainer img {
+  max-width: 100%;
+  max-height: 100%
+}
+
+.imgContainer p {
+  margin-top: 130px;
+}
+
+.loading {
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  position: fixed;
+  text-align: center;
+  z-index: 99;
+}
