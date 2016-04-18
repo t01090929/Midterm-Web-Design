@@ -70,3 +70,7 @@ p {
   background-size: 100%;
   margin-top: 1em;
 }
+
+.icon {
+  width: 30px;
+}
