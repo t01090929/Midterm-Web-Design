@@ -63,7 +63,6 @@ var getImageThumbnailLink = function(data, option){
 
 var getItemInfoURL = function(data){
   var link = "./item.html?id=" + data._id + "&type=" + data.type;
-  console.log(link);
   return link //取得該物品詳細資料連結元素
 }
 

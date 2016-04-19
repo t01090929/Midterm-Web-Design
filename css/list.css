@@ -1,20 +1,13 @@
 #titleContainer {
   background-color: rgba(255, 255, 255, 0.7);
-  height: 90px;
   margin-top: 1em;
-  padding: 1em;
-}
 
-#found_title{
-    padding-left:1em;
-}
-
-#lost_title{
-    padding-left:1em;
 }
 
 #titleContainer h1 {
-  margin-top: 12px;
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+  padding-left: 1em;
 }
 
 body {
@@ -33,6 +26,7 @@ body {
 
 .item p {
   font-size: 1.5em;
+  padding-left: 0.5em;
   display: inline-block;
 }
 
@@ -48,6 +42,11 @@ body {
   background-color: rgba(0, 0, 0, 0.2);
   box-shadow: 1px 1px 0px #777777;
   color: white;
+  transition: .1s ease-in;
+}
+
+.item > div:hover {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .imgContainer {

@@ -49,7 +49,6 @@ var main = function () {
 
   $('.imgContainer').click(
     function(e){
-      console.log("99999");
       e.stopPropagation();
       $("#openFile").trigger('click');
   });
@@ -113,7 +112,6 @@ var main = function () {
 $(document).ready(main);
 
 var uploadImage = function(imageData, callback){
-  console.log(imageData);
   if(imageData.length > 1){
     $.ajax({
       url: 'https://api.imgur.com/3/image',
