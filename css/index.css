@@ -9,7 +9,6 @@ body {
 
 #logo {
   margin-top: 50px;
-  margin-bottom: 50px;
   height: 100%;
 }
 
@@ -19,28 +18,31 @@ body {
   color: white;
   margin-top: 300px;
   margin-left: 10%;
+  transform: rotate(-15deg);
 }
 
 #lostButton {
   background-color: rgba(0, 0, 0, 0.5);
   height: 550px;
+  padding: 0.5em;
+  margin-top: 50px;
 }
 
 #foundButton {
   background-color: rgba(0, 0, 0, 0.5);
   height: 550px;
+  padding: 0.5em;
+  margin-top: 50px;
 }
-
-/*#lost_no{
-    display:none;
-}*/
 
 #found_o{
     display:none;
 }
 
 .words{
-    float:left;
+    top: 0px;
+    left: 0px;
     position:absolute;
-    margin-top: 15%;
+    margin-top: 10%;
+    width: 100%;
 }

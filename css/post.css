@@ -16,7 +16,6 @@ body {
   /*height: 90px;*/
   margin-top: 1em;
   /*padding: 1em;*/
-  margin-bottom: 1.5em;
 }
 
 #titleContainer h1 {
@@ -165,7 +164,7 @@ body {
 #button_container p {
   font-size: 7em;
   font-family: Eutemia;
-  margin-top: 1.3em;
+  margin-top: 1.4em;
 }
 
 #lostButton {
@@ -173,6 +172,7 @@ body {
   background-size:cover;
   height: 550px;
   cursor: pointer;
+  margin-top: 1.5em;
 }
 
 #foundButton {
@@ -180,6 +180,7 @@ body {
   background-size:cover;
   height: 550px;
   cursor: pointer;
+  margin-top: 1.5em;
 }
 
 .exit {

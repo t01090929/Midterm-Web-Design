@@ -1,6 +1,7 @@
 body {
   background-image: url("../image/background.jpg");
   background-size: 1920px 1200px;
+  font-family: cursive;
 }
 
 #titleContainer {
@@ -19,10 +20,46 @@ body {
   border-radius: 50%;
 }
 
+#team {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+#team div {
+  margin-top: 1em;
+}
+
 .dev {
   text-align: center;
 }
 
 .dev p {
-  
+  font-size: 1.5em;
+}
+
+.subtitle {
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.subtitle h3 {
+  padding-left: 1em;
+}
+
+.resuse {
+  margin-bottom: 3px;
+  background-color: rgba(255, 255, 255, 0.7);;
+}
+
+.resuse img {
+  height: 150px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.resuse p {
+  font-size: 1.5em;
+  margin-top: 65px;
+  margin-bottom: 10px;
 }
