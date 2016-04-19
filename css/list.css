@@ -5,6 +5,14 @@
   padding: 1em;
 }
 
+#found_title{
+    padding-left:1em;
+}
+
+#lost_title{
+    padding-left:1em;
+}
+
 #titleContainer h1 {
   margin-top: 12px;
 }
