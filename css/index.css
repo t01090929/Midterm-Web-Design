@@ -1,3 +1,7 @@
+@font-face {
+  font-family: Eutemia; src: url('../ttf/Eutemia.ttf');
+}
+
 body {
   background-image: url("../image/background.jpg");
   background-size: 1920px 1200px;
@@ -9,7 +13,12 @@ body {
   height: 100%;
 }
 
-#button_container{
+#button_container h1{
+  font-family: Eutemia;
+  font-size: 9em;
+  color: white;
+  margin-top: 300px;
+  margin-left: 10%;
 }
 
 #lostButton {

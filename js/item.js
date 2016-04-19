@@ -69,13 +69,13 @@ function getUrlVars()
 
 var loadingComplete = function(type){
   if(type == "lost"){
-    $("#who_f_or_l").text("遺失人");
+    $("#who_f_or_l").text("Lost by");
   }
   else if(type == "found"){
-    $("#who_f_or_l").text("拾獲人");
+    $("#who_f_or_l").text("Found by");
   }
   else {
-    $("#who_f_or_l").text("錯誤!!!!!");
+    $("#who_f_or_l").text("ERROR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   }
   $(".loading").fadeOut(300);
 }
