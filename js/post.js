@@ -9,6 +9,7 @@ var main = function () {
       var reader = new FileReader();
       reader.onload = function(){
         $('.imgContainer').children('img').attr("src", reader.result);
+        $('.imgContainer').children('img').css("margin-top", "0px");
         $('.imgContainer').children('p').hide();
       }
       reader.readAsDataURL(input.files[0]);

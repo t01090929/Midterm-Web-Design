@@ -30,6 +30,8 @@
   height: 100px;
   display: none;
   z-index: 10;
+  font-family: cursive;
+  font-weight: bolder;
 }
 
 #sideBar p {
@@ -50,6 +52,15 @@
 
 #footer {
   background-color: rgba(0, 0, 0, 0.6);
-  height: 85px;
   margin-top: 1em;
+  color: white;
+}
+
+#footer p {
+  display: inline-block;
+  font-size: 1.2em;
+}
+#footer div div {
+  margin-top: 1em;
+  margin-bottom: 1em;
 }

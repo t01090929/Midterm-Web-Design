@@ -119,11 +119,16 @@ body {
 
 .imgContainer img {
   max-width: 100%;
-  height: 100%
+  height: 296px;
+  margin-top: -200px;
 }
 
 .imgContainer p {
   margin-top: 130px;
+}
+
+.inputArea {
+  padding-left: 0px;
 }
 
 #submitContainer {
