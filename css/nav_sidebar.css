@@ -44,3 +44,9 @@
   height: 50px;
   margin-top: 20px;
 }
+
+#footer {
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 85px;
+  margin-top: 1em;
+}

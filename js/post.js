@@ -2,9 +2,7 @@ var whichPageIn = "";
 var uploadedImageURL;
 var deleteHash;
 var dataToSend;
-var myFirebaseRef;
 var main = function () {
-  myFirebaseRef = new Firebase("https://s60912frank.firebaseio.com/");
   $('#openFile').on("change",
     function(e){
       var input = e.target;
@@ -68,14 +66,15 @@ var main = function () {
       else{
         beginLoading();
         dataToSend = [inputArea.find('#title').val(), inputArea.find('#location').val(), inputArea.find('#who').val(), $("#" + whichPageIn).find("#describe").val()];
-        var dbloc;
+        var type;
         if(whichPageIn == "left_page"){
-          dbloc = "lostFound/lost";
+          type = "lost";
         }
         else if(whichPageIn == "right_page"){
-          dbloc = "lostFound/found";
+          type = "found";
         }
-        uploadImage($('.imgContainer').children('img').attr("src").replace("data:image/png;base64,",""), function(){ sendData(dbloc); });
+        var dataURL = $('.imgContainer').children('img').attr("src");
+        uploadImage(dataURL.substring(dataURL.indexOf(',')+1), function(){ sendData(type); });
       }
     }
   );
@@ -144,53 +143,32 @@ var uploadImage = function(imageData, callback){
   }
 }
 
-var sendData = function(loc){
-  var now = getTimeData();
-  myFirebaseRef.child(loc).push().set(
-    {
-      title: dataToSend[0],
-      location: dataToSend[1],
-      who: dataToSend[2],
-      describe: dataToSend[3],
-      time: now[0],
-      timestamp: now[1],
-      imageURL: getuploadedImageURL(),
-      deleteHash: getDeleteHash()
+var sendData = function(type){
+  $.ajax({
+    url: "http://lostfound-gmin.rhcloud.com/db/insertdata",
+    type: "POST",
+    dataType: 'json',
+    data: {
+      "type": type,
+      "title": dataToSend[0],
+      "location": dataToSend[1],
+      "who": dataToSend[2],
+      "describe": dataToSend[3],
+      "time": getTimeData(),
+      "imageURL": getuploadedImageURL(),
+      "deleteHash": getDeleteHash()
     },
-    function(error){
+    success: function(resp) {
+      if(resp.err == null){
+        alert("上傳成功!");
+      }
+      else{
+        alert("上傳失敗!");
+      }
       endLoading();
-      if (error) {
-        alert("傳輸失敗!");
-      }
-      else {
-        alert("傳輸成功!");
-      }
+      window.location.replace("./" + type + "list.html");
     }
-  );
-}
-
-//取得現在的時間資料
-var getTimeData = function(){
-  var current = new Date();
-  //將時間格式化成好看的
-  var timeString = current.getFullYear() + "/" +
-                   formatZero((current.getMonth()+1)) + "/" +
-                   formatZero(current.getDate()) + " " +
-                   formatZero(current.getHours()) + ":" +
-                   formatZero(current.getMinutes());
-  //取得時間戳記，排序用
-  var timestamp = current.getTime();
-  return [timeString, timestamp];
-}
-
-//<10的數字前面補0
-var formatZero = function(num){
-  if(num < 10){
-    return "0" + num;
-  }
-  else{
-    return num;
-  }
+  });
 }
 
 //檢查是否有上傳圖片
@@ -219,4 +197,25 @@ var beginLoading = function(){
 
 var endLoading = function(){
   $(".loading").fadeOut(300);
+}
+
+var getTimeData = function(){
+  var current = new Date();
+  //將時間格式化成好看的
+  var timeString = current.getFullYear() + "/" +
+                   formatZero((current.getMonth()+1)) + "/" +
+                   formatZero(current.getDate()) + " " +
+                   formatZero(current.getHours()) + ":" +
+                   formatZero(current.getMinutes());
+  return timeString;
+}
+
+//<10的數字前面補0
+var formatZero = function(num){
+  if(num < 10){
+    return "0" + num;
+  }
+  else{
+    return num;
+  }
 }

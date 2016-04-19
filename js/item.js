@@ -1,24 +1,25 @@
-var myFirebaseRef = new Firebase("https://s60912frank.firebaseio.com/");
 $(document).ready(
   function(){
     var vars = getUrlVars();
-
-    myFirebaseRef.child("lostFound/" + vars["type"] + "/" + vars["id"]).on("value",
-      function(snapshot){
-        try{
-          $('.imgContainer a').attr("href",snapshot.val().imageURL);
-          $('.imgContainer img').attr("src",snapshot.val().imageURL);
-          $('#title').text(snapshot.val().title);
-          $('#location').text(snapshot.val().location);
-          $('#time').text(snapshot.val().time);
-          $('#who').text(snapshot.val().who);
-          $('#describe').text(snapshot.val().describe);
-          loadingComplete(vars["type"]);
-        }
-        catch(e) {
-          loadingComplete(vars["type"]);
-          alert("查無資料!");
-        }
+    $.ajax({
+      url: "http://lostfound-gmin.rhcloud.com/db/qureydataid",
+      type: "POST",
+      data: {
+        "id": vars["id"]
+      },
+      dataType: 'json',
+      success: function(resp) {
+        var data = resp.data;
+        var list = $("<ul>").prependTo($("#lostArea"));
+        $('.imgContainer a').attr("href",data.imageURL);
+        $('.imgContainer img').attr("src",data.imageURL);
+        $('#title').text(data.title);
+        $('#location').text(data.location);
+        $('#time').text(data.time);
+        $('#who').text(data.who);
+        $('#describe').text(data.describe);
+        loadingComplete(vars["type"]);
+      }
     });
 
     $("#sideBar").css(

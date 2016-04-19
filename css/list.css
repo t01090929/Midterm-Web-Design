@@ -15,11 +15,6 @@ body {
   background-attachment: fixed;
 }
 
-p {
-  display: inline-block;
-  margin: 0;
-}
-
 .item {
   padding: 0.5em;
 }
@@ -30,6 +25,7 @@ p {
 
 .item p {
   font-size: 1.5em;
+  display: inline-block;
 }
 
 .item h1 {

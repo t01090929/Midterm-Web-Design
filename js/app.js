@@ -1,15 +1,19 @@
-var myFirebaseRef;
 var main = function() {
-
   var loc =  window.location.href.split("/");
   var option = loc[loc.length - 1].split(".")[0];
   var whee = option.slice(0,option.length - 4);
-
-  myFirebaseRef = new Firebase("https://s60912frank.firebaseio.com/");
-    //這個在每次有資料增加時會執行
-    myFirebaseRef.child("lostFound/" + whee).on("child_added",
-    function(snapshot){
-        addDataToTable(snapshot);
+    $.ajax({
+      url: "http://lostfound-gmin.rhcloud.com/db/qureydata",
+      type: "POST",
+      data: {
+        "type": whee
+      },
+      dataType: 'json',
+      success: function(resp) {
+        for (var i = 0; i < resp.data.length; i++) {
+          addDataToTable(resp.data[i]);
+        }
+      }
     });
 
   $("#sideBar").css(
@@ -45,29 +49,9 @@ var main = function() {
 
 $(document).ready(main);
 
-//檢查是否有上傳圖片
-var getuploadedImageURL = function(){
-  if(uploadedImageURL != null){
-    return uploadedImageURL;
-  }
-  else{
-    return null;
-  }
-}
-
-//檢查是否有deletehash
-var getDeleteHash = function(){
-  if(deleteHash != null){
-    return deleteHash;
-  }
-  else{
-    return null;
-  }
-}
-
 //創造一個img元素放縮圖並且連結到原圖
 var getImageThumbnailLink = function(data, option){
-  var imageURL = data.val().imageURL;
+  var imageURL = data.imageURL;
   if(imageURL != null){
     var getFileType = imageURL.split("/")[3].split(".")[1];
     return imageURL.replace("." + getFileType, option + "." + getFileType);
@@ -78,7 +62,8 @@ var getImageThumbnailLink = function(data, option){
 }
 
 var getItemInfoURL = function(data){
-  var link = "./item.html?id=" + data.key() + "&type=" + data.ref().parent().key();
+  var link = "./item.html?id=" + data._id + "&type=" + data.type;
+  console.log(link);
   return link //取得該物品詳細資料連結元素
 }
 
@@ -89,12 +74,12 @@ var addDataToTable = function(data){ //把資料加到table中顯示
   imgThumbnail.attr("src", getImageThumbnailLink(data, "s"));
   imgThumbnail.hover(function(e) { itemHoverIn(getImageThumbnailLink(data, "m"), e); },itemHoverOut);
   newItem.find("a").attr("href", getItemInfoURL(data));
-  newItem.find("h1").text(data.val().title).click(function(){ showInfo(data) });
+  newItem.find("h1").text(data.title);
   var conter = 0;
-  var dataP = [data.val().location,
-               data.val().time,
-               data.val().who,
-               data.val().describe];
+  var dataP = [data.location,
+               data.time,
+               data.who,
+               data.describe];
   newItem.find("p").each(
     function(){
       $(this).text(dataP[conter]);
