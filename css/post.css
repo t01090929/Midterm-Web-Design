@@ -13,15 +13,14 @@ body {
 
 #titleContainer {
   background-color: rgba(255, 255, 255, 0.7);
-  /*height: 90px;*/
   margin-top: 1em;
-  /*padding: 1em;*/
 }
 
 #titleContainer h1 {
   margin-top: 0.75em;
   margin-bottom: 0.75em;
   padding-left: 1em;
+  font-weight: bolder;
 }
 
 .transparent{
