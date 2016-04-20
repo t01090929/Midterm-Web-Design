@@ -61,6 +61,10 @@ body {
 
 .resuse p {
   font-size: 1.5em;
-  margin-top: 65px;
+  margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.martoplg {
+  height: 55px;
 }
