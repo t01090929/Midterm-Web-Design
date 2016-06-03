@@ -52,7 +52,7 @@ $(document).ready(main);
 //創造一個img元素放縮圖並且連結到原圖
 var getImageThumbnailLink = function(data, option){
   var imageURL = data.imageURL;
-  if(imageURL != null){
+  if(imageURL != ""){
     var getFileType = imageURL.split("/")[3].split(".")[1];
     return imageURL.replace("." + getFileType, option + "." + getFileType);
   }
