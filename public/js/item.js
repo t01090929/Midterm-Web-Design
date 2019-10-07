@@ -2,7 +2,7 @@ $(document).ready(
   function(){
     var vars = getUrlVars();
     $.ajax({
-      url: "http://lostfound-gmin.rhcloud.com/db/qureydataid",
+      url: "db/qureydataid",
       type: "POST",
       data: {
         "id": vars["id"]

@@ -144,7 +144,7 @@ var uploadImage = function(imageData, callback){
 
 var sendData = function(type){
   $.ajax({
-    url: "http://lostfound-gmin.rhcloud.com/db/insertdata",
+    url: "db/insertdata",
     type: "POST",
     dataType: 'json',
     data: {

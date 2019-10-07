@@ -4,7 +4,7 @@ var cors = require("cors");
 var mongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectId;
 var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 var connection_string = '127.0.0.1:27017/YOUR_APP_NAME';
 var database;
 // if OPENSHIFT env variables are present, use the available connection info:

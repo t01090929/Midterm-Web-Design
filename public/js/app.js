@@ -3,7 +3,7 @@ var main = function() {
   var option = loc[loc.length - 1].split(".")[0];
   var whee = option.slice(0,option.length - 4);
     $.ajax({
-      url: "http://lostfound-gmin.rhcloud.com/db/qureydata",
+      url: "db/qureydata",
       type: "POST",
       data: {
         "type": whee
