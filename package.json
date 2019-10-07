@@ -13,10 +13,10 @@
   },
 
   "dependencies": {
-    "express": ">= 4.13.4",
-    "body-parser": ">=1.15.0",
-    "cors": ">=2.7.1",
-    "mongodb": ">=2.1.16"
+    "express": "^4.13.4",
+    "body-parser": "^1.15.0",
+    "cors": "^2.7.1",
+    "mongodb": "^2.1.16"
   },
   "devDependencies": {},
   "bundleDependencies": [],

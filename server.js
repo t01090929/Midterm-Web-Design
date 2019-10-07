@@ -14,6 +14,8 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
   process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
   process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
   process.env.OPENSHIFT_APP_NAME;
+} else if (process.env.MONGO_ADDR) {
+  connection_string = `${process.env.MONGO_ADDR}:27017/YOUR_APP_NAME`
 }
 mongoClient.connect('mongodb://'+connection_string, function(err, db) {
   if(err) throw err;

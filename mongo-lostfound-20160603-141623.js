@@ -1,5 +1,8 @@
-
-/** data indexes **/
+var mongoClient = require('mongodb').MongoClient;
+var connection_string = 'db:27017/YOUR_APP_NAME'; // bad
+mongoClient.connect('mongodb://'+connection_string, function(err, db) {
+  if(err) throw err;
+  /** data indexes **/
 db.getCollection("data").ensureIndex({
   "_id": NumberInt(1)
 },[
@@ -260,3 +263,5 @@ db.getCollection("data").insert({
   "deleteHash": "",
   "_id": ObjectId("5736a0aa044c451b2b9ff4d5")
 });
+
+})
